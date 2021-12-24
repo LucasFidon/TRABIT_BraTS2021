@@ -1,0 +1,30 @@
+# Copyright 2021 Lucas Fidon
+
+data:
+  split: 0.9                          # ratio of data used for training vs validation
+  spacing: [1.0, 1.0, 1.0]
+  patch_size: [128, 192, 128]
+  data_augmentation: "nnUNet"
+
+network:
+  model_name: "DynUNet"
+  num_deep_supervision: 4
+
+loss:
+  loss_name: "marginalized_Dice_CE"
+  weight_decay: 3e-5
+
+optimization:
+  optimizer: "SGD_Nesterov"
+  momentum: 0.99
+  lr: 1e-2                           # initial learning rate
+  lr_scheduler: "polynomial_decay"
+  batch_size: 2
+  val_batch_size: 1                  # batch size used during validation
+  max_epochs: 550                    # in nnU-Net 1 epoch = 250 iterations; in our case it is #training cases / batch size
+  val_interval: 25                   # interval of epochs between evaluations on the validation dataset
+  gradient_clip_l2_norm: 12
+
+log:
+  exp_name: "DynUNet_partial_brats21_MargDiceCE"        # default name for the experiments using this config file
+  message: "DynUNet for partial supervision for BraTS 2021"

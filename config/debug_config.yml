@@ -1,0 +1,33 @@
+# Copyright 2021 Lucas Fidon and Suprosanna Shit
+# Config file to use for debugging
+
+data:
+  split: 0.95                         # ratio of data used for training vs validation
+  spacing: [1.0, 1.0, 1.0]
+  patch_size: [64, 128, 64]
+  data_augmentation: "nnUNet"
+
+network:
+  model_name: "DynUNet"
+  num_deep_supervision: 3
+
+loss:
+  loss_name: "WassDice_CE_BraTSv2"
+  weight_decay: 0
+
+optimization:
+  optimizer: "Adam"
+  momentum: 0.95
+  lr: 3e-3                           # initial learning rate
+  warm_lr_init: 0                    # warm up initial learning rate
+  warm_epoch: 4                      # warm up epoch, without warmup needs warm_epoch=0
+  lr_scheduler: "constant"
+  batch_size: 2
+  val_batch_size: 16                  # batch size used during validation
+  max_epochs: 1000                   # Note that in nnU-Net 1 epoch = 250 iterations; in our case it is #training cases / batch size
+  val_interval: 1                    # run validation every val_interval epochs
+  gradient_clip_l2_norm: 12
+
+log:
+  exp_name: "debug"
+  message: "debugging configuration. Should run on a 8GB GPU"

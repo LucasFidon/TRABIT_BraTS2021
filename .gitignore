@@ -1,0 +1,4 @@
+*runs
+.idea
+*__pycache__
+trained_weights

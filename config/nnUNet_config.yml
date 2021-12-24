@@ -1,0 +1,33 @@
+# Copyright 2021 Lucas Fidon and Suprosanna Shit
+# Config file to reproduce nnU-Net results on BraTS 2020
+
+data:
+  split: 0.9                          # ratio of data used for training vs validation
+  spacing: [1.0, 1.0, 1.0]
+  patch_size: [128, 192, 128]
+  data_augmentation: "nnUNet"
+
+network:
+  model_name: "DynUNet"
+  num_deep_supervision: 4
+
+loss:
+  loss_name: "Dice_CE"
+  weight_decay: 3e-5
+
+optimization:
+  optimizer: "SGD_Nesterov"
+  momentum: 0.99
+  lr: 1e-2                           # initial learning rate
+  warm_lr_init: 1e-4                 # warm up initial learning rate
+  warm_epoch: 2                      # warm up epoch, without warmup needs warm_epoch=0
+  lr_scheduler: "polynomial_decay"   # note that this depends on max_epochs
+  batch_size: 2
+  val_batch_size: 1                  # batch size used during validation
+  max_epochs: 1500                   # in nnU-Net 1 epoch = 250 iterations; in our case it is #training cases / batch size
+  val_interval: 100                  # interval of epochs between evaluations on the validation dataset
+  gradient_clip_l2_norm: 12
+
+log:
+  exp_name: "nnUNet"                 # default name for the experiments using this config file
+  message: "nnU-Net in MONAI for BraTS"

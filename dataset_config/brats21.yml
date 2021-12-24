@@ -1,0 +1,22 @@
+# Copyright 2021 Lucas Fidon and Suprosanna Shit
+# Config file with the hyperparameters and paths for the BraTS21 dataset
+
+name: 'BraTS2021'  # Must be one in SUPPORTED_DATASET in /src/data/factory.py
+
+path:
+  train: '/data/brats/RSNA_ASNR_MICCAI_BraTS2021_TrainingData_20210706/RSNA_ASNR_MICCAI_BraTS2021_TrainingData/'
+  test: '/data/brats/RSNA_ASNR_MICCAI_BraTS2021_ValidationData'
+
+info:
+  labels: {
+    'NCR_NET': 1,  # Necrotic and Non-Enhancing Tumor Core
+    'ED': 2,       # Peritumoral Edema
+    'ET': 4,       # Enhancing Tumor
+    'background': 0,
+  }
+  image_keys: ["flair", "t1", "t1ce", "t2"]
+  all_keys: ["flair", "t1", "t1ce", "t2", "label"]
+
+log:
+  name: 'brats21'
+  message: "BraTS 2021 dataset"

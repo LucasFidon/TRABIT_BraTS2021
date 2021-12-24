@@ -1,0 +1,30 @@
+# Copyright 2021 Lucas Fidon
+
+data:
+  split: 0.9                          # ratio of data used for training vs validation
+  spacing: [0.8, 0.8, 0.8]
+  patch_size: [128, 160, 128]
+  data_augmentation: "nnUNet"
+
+network:
+  model_name: "DynUNet"
+  num_deep_supervision: 4
+
+loss:
+  loss_name: "Leaf_Dice_CE"
+  weight_decay: 3e-5
+
+optimization:
+  optimizer: "SGD_Nesterov"
+  momentum: 0.99
+  lr: 1e-2                           # initial learning rate
+  lr_scheduler: "polynomial_decay"
+  batch_size: 2
+  val_batch_size: 1                  # batch size used during validation
+  max_epochs: 2200                   # in nnU-Net 1 epoch = 250 iterations; in our case it is #training cases / batch size
+  val_interval: 100                  # interval of epochs between evaluations on the validation dataset
+  gradient_clip_l2_norm: 12
+
+log:
+  exp_name: "nnUNet_partial_LeafDiceCE"        # default name for the experiments using this config file
+  message: "nnU-Net in MONAI for partial supervision for fetal brain 3D MRI segmentation"
