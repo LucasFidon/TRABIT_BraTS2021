@@ -57,4 +57,29 @@ https://drive.google.com/drive/folders/1b9rZDv9HHCxiEtiHz4h4I1vvjzScivpg?usp=sha
 Please put the weights in the folder ```\trained_weights``` and make sure the subfolders are named ```model_i``` for i integer from 1 to 7
 
 ## How to cite
-If you find this repository useful for your research please cite our work
+If you find this repository useful for your research, please cite our work
+* L. Fidon, S. Shit, I. Ezhov, J. C. Paetzold, S. Ourselin, T. Vercauteren.
+[Generalized Wasserstein Dice Loss, Test-time Augmentation, and Transformers for the BraTS 2021 challenge.][brats2021]
+BraTS 2021.
+* L. Fidon, M. Aertsen, S. Shit, P. Demaerel, S. Ourselin, J. Deprest, T. Vercauteren.
+[Partial supervision for the FeTA challenge 2021.][feta2021]
+FeTA Challenge 2021.
+
+BibTeX:
+```
+@article{fidon2021generalized,
+  title={Generalized Wasserstein Dice Loss, Test-time Augmentation, and Transformers for the BraTS 2021 challenge},
+  author={Fidon, Lucas and Shit, Suprosanna and Ezhov, Ivan and Paetzold, Johannes C and Ourselin, S{\'e}bastien and Vercauteren, Tom},
+  journal={arXiv preprint arXiv:2112.13054},
+  year={2021}
+}
+@article{fidon2021partial,
+  title={Partial supervision for the FeTA challenge 2021},
+  author={Fidon, Lucas and Aertsen, Michael and Shit, Suprosanna and Demaerel, Philippe and Ourselin, S{\'e}bastien and Deprest, Jan and Vercauteren, Tom},
+  journal={arXiv preprint arXiv:2111.02408},
+  year={2021}
+}
+```
+
+[brats2021]: https://arxiv.org/abs/2112.13054
+[feta2021]: https://arxiv.org/abs/2111.02408
